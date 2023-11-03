@@ -2,6 +2,7 @@ import { renderElement } from './render';
 import Playroom from './Playroom/Playroom';
 import { StoreProvider } from './StoreContext/StoreContext';
 import playroomConfig from './config';
+import * as esbuild from 'esbuild-wasm';
 
 const polyfillIntersectionObserver = () =>
   typeof window.IntersectionObserver !== 'undefined'
@@ -26,21 +27,27 @@ polyfillIntersectionObserver().then(() => {
       Object.entries(components).filter(([_, value]) => value)
     );
 
-    renderElement(
-      <StoreProvider themes={themeNames} widths={widths}>
-        <Playroom
-          components={filteredComponents}
-          widths={widths}
-          themes={themeNames}
-          snippets={
-            typeof snippets.default !== 'undefined'
-              ? snippets.default
-              : snippets
-          }
-        />
-      </StoreProvider>,
-      outlet
-    );
+    esbuild
+      .initialize({
+        wasmURL: 'https://unpkg.com/esbuild-wasm/esbuild.wasm',
+      })
+      .then(() => {
+        renderElement(
+          <StoreProvider themes={themeNames} widths={widths}>
+            <Playroom
+              components={filteredComponents}
+              widths={widths}
+              themes={themeNames}
+              snippets={
+                typeof snippets.default !== 'undefined'
+                  ? snippets.default
+                  : snippets
+              }
+            />
+          </StoreProvider>,
+          outlet
+        );
+      });
   };
   renderPlayroom();
 

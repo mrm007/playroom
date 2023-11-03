@@ -1,4 +1,4 @@
-import { transform } from '@babel/standalone';
+import { transform as esbuildTransform } from 'esbuild-wasm';
 
 export const ReactFragmentPragma = 'R_F';
 export const ReactCreateElementPragma = 'R_cE';
@@ -7,17 +7,11 @@ export const openFragmentTag = '<>';
 export const closeFragmentTag = '</>';
 
 export const compileJsx = (code: string) =>
-  transform(`${openFragmentTag}${code.trim()}${closeFragmentTag}`, {
-    presets: [
-      [
-        'react',
-        {
-          pragma: ReactCreateElementPragma,
-          pragmaFrag: ReactFragmentPragma,
-        },
-      ],
-    ],
-  }).code;
+  esbuildTransform(`${openFragmentTag}${code.trim()}${closeFragmentTag}`, {
+    loader: 'jsx',
+    jsxFactory: ReactCreateElementPragma,
+    jsxFragment: ReactFragmentPragma,
+  });
 
 export const validateCode = (code: string) => {
   try {

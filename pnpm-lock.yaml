@@ -7,7 +7,6 @@ specifiers:
   '@babel/preset-env': ^7.20.2
   '@babel/preset-react': ^7.18.6
   '@babel/preset-typescript': ^7.18.6
-  '@babel/standalone': ^7.20.6
   '@changesets/cli': ^2.25.2
   '@octokit/rest': ^19.0.5
   '@soda/friendly-errors-webpack-plugin': ^1.8.1
@@ -35,6 +34,7 @@ specifiers:
   current-git-branch: ^1.1.0
   cypress: ^12.0.2
   dedent: ^0.7.0
+  esbuild-wasm: ^0.19.5
   eslint: ^8.44.0
   eslint-config-seek: ^11.3.1
   fast-glob: ^3.2.12
@@ -78,7 +78,6 @@ dependencies:
   '@babel/preset-env': 7.20.2_@babel+core@7.20.5
   '@babel/preset-react': 7.18.6_@babel+core@7.20.5
   '@babel/preset-typescript': 7.18.6_@babel+core@7.20.5
-  '@babel/standalone': 7.20.6
   '@soda/friendly-errors-webpack-plugin': 1.8.1_webpack@5.75.0
   '@types/base64-url': 2.2.0
   '@types/codemirror': 5.60.5
@@ -101,6 +100,7 @@ dependencies:
   css-loader: 6.7.2_webpack@5.75.0
   current-git-branch: 1.1.0
   dedent: 0.7.0
+  esbuild-wasm: 0.19.5
   fast-glob: 3.2.12
   find-up: 5.0.0
   fuzzy: 0.1.3
@@ -1642,11 +1642,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
-
-  /@babel/standalone/7.20.6:
-    resolution: {integrity: sha512-u5at/CbBLETf7kx2LOY4XdhseD79Y099WZKAOMXeT8qvd9OSR515my2UNBBLY4qIht/Qi9KySeQHQwQwxJN4Sw==}
-    engines: {node: '>=6.9.0'}
-    dev: false
 
   /@babel/template/7.18.10:
     resolution: {integrity: sha512-TI+rCtooWHr3QJ27kJxfjutghu44DLnasDMwpDqCXVTal9RLp3RSYNh4NdBrRP2cQAoG9A8juOQl6P6oZG4JxA==}
@@ -4783,6 +4778,12 @@ packages:
       is-date-object: 1.0.5
       is-symbol: 1.0.4
     dev: true
+
+  /esbuild-wasm/0.19.5:
+    resolution: {integrity: sha512-7zmLLn2QCj93XfMmHtzrDJ1UBuOHB2CZz1ghoCEZiRajxjUvHsF40PnbzFIY/pmesqPRaEtEWii0uzsTbnAgrA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dev: false
 
   /esbuild/0.11.23:
     resolution: {integrity: sha512-iaiZZ9vUF5wJV8ob1tl+5aJTrwDczlvGP0JoMmnpC2B0ppiMCu8n8gmy5ZTGl5bcG081XBVn+U+jP+mPFm5T5Q==}

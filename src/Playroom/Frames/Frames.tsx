@@ -37,8 +37,9 @@ export default function Frames({ code, themes, widths }: FramesProps) {
 
   useEffect(() => {
     try {
-      const newCode = compileJsx(code);
-      setRenderCode(newCode);
+      compileJsx(code).then(({ code: newCode }) => {
+        setRenderCode(newCode);
+      });
     } catch (e) {}
   }, [code]);
 
