@@ -1,5 +1,15 @@
 # playroom
 
+## 0.36.0
+
+### Minor Changes
+
+- c3f0373: Drop support for Node versions <18.12.0
+
+### Patch Changes
+
+- c3f0373: Update dependencies
+
 ## 0.35.0
 
 ### Minor Changes
